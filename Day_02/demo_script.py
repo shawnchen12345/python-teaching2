@@ -1,5 +1,6 @@
 import json
 import time
+import os
 
 # =========================================================
 # Day 2 课堂演示脚本: 数据结构的力量
@@ -7,15 +8,20 @@ import time
 
 # 1. 模拟从服务器获取数据 (读取 JSON 文件)
 print(">>> 正在从 '服务器' 下载员工数据...")
-time.sleep(1) # 假装网络延迟
+time.sleep(1) # 模拟网络延迟
+
+# 获取脚本所在目录的绝对路径，确保能在任何地方运行
+script_dir = os.path.dirname(os.path.abspath(__file__))
+json_path = os.path.join(script_dir, "demo_data.json")
 
 try:
-    with open("demo_data.json", "r", encoding="utf-8") as f:
+    with open(json_path, "r", encoding="utf-8") as f:
         employees = json.load(f)
     print(f"✅ 成功加载 {len(employees)} 条员工记录！\n")
 except FileNotFoundError:
-    print("❌ 错误：找不到数据文件！请检查 demo_data.json 是否存在。")
+    print(f"❌ 错误：找不到数据文件！\n请检查该路径是否存在文件:\n{json_path}")
     exit()
+
 
 # ---------------------------------------------------------
 # 演示 1: 复杂数据结构的层级访问 (列表 -> 字典 -> 列表)
