@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1001,
+        "name": "Tony",
+        "role": "Admin",
+        "skills": [
+            "Python",
+            "Linux",
+            "Docker"
+        ],
+        "profile": {
+            "age": 28,
+            "email": "tony@example.com"
+        }
+    },
+    {
+        "id": 1002,
+        "name": "Alice",
+        "role": "Developer",
+        "skills": [
+            "Java",
+            "Spring"
+        ],
+        "profile": {
+            "age": 24,
+            "email": "alice@corp.com"
+        }
+    },
+    {
+        "id": 1003,
+        "name": "Bob",
+        "role": "Manager",
+        "skills": [
+            "Excel",
+            "PPT"
+        ],
+        "profile": {
+            "age": 35,
+            "email": "bob@boss.com"
+        }
+    }
+]
