@@ -10,6 +10,22 @@
 
 逻辑是否容易维护
 
+💡 举个栗子（班级成绩单）：
+-----------------------
+❌ 方式 A：没有结构（变量散乱）
+score_1 = 85
+score_2 = 92
+score_3 = 78
+... 如果班里有 50 个人？
+算平均分：(score_1 + score_2 + ... + score_50) / 50
+👉 缺点：代码写死，难维护，无法应对人数变化。
+
+✅ 方式 B：使用数据结构（List 列表）
+scores = [85, 92, 78, ...]
+算平均分：sum(scores) / len(scores)
+👉 优点：代码简洁，只需一行，人数变了代码不用改。
+-----------------------
+
 Python 最常用的 5 种数据结构：
 
 List
@@ -226,26 +242,51 @@ s = "  Python Is Fun  "
 
 把空格替换成 -
 
-🧠 第13页：综合案例（真实项目思路）
-学生成绩管理
-students = [
-    {"name": "Alice", "score": 85},
-    {"name": "Bob", "score": 92},
-    {"name": "Tom", "score": 78}
+🧠 第13页：综合案例 — 完美的数据结构设计
+
+需求：管理班级成绩，区分期中、期末、高考，并记录选考科目。
+
+# 🏆 终极结构设计：
+
+class_roster = [
+    {
+        "name": "Alice",  # String: 姓名
+        "id": 1001,
+        "exams": {        # Dict: 考试类型 -> 分数详情
+            "期中": (88, 100),  # Tuple: (得分, 满分) 不可变，数据安全
+            "期末": (95, 100),
+            "高考": (650, 750)
+        },
+        "subjects": {"Math", "English", "Physics"} # Set: 选课集合(自动去重)
+    },
+    {
+        "name": "Bob",
+        "id": 1002,
+        "exams": {
+            "期中": (75, 100),
+            "期末": (82, 100),
+            "高考": (590, 750)
+        },
+        "subjects": {"Math", "Chinese", "History"}
+    }
 ]
 
-avg = sum(s["score"] for s in students) / len(students)
-top_student = max(students, key=lambda s: s["score"])
+# 💡 结构解析 (为什么要这么组合？)
+# 1. List []: 班级要把所有学生排在一起，有序且方便遍历。
+# 2. Dict {}: 每个人有不同属性(名字、分数、课程)，键值对查找最快。
+# 3. Tuple (): (得分, 满分) 是一组固定搭配，且不应被轻易修改（只读）。
+# 4. Set {}: 课程列表重点在于“有没有选”，集合可以高效做交集/并集运算。
 
-print("平均分:", avg)
-print("最高分学生:", top_student["name"])
+# 🚀 实战操作：
+# 1. 打印 Alice 的高考得分率：
+alice = class_roster[0]
+score, full = alice["exams"]["高考"]
+print(f"得分率: {score/full:.2%}")
 
-
-用到的数据结构：
-
-List（存多个学生）
-
-Dict（存单个学生信息）
+# 2. 找出两人共同选修的课 (Set 交集)：
+bob = class_roster[1]
+common = alice["subjects"] & bob["subjects"]
+print("共同选课:", common)
 
 🎯 第14页：总结对比表
 数据结构	是否有序	是否可变	典型用途
