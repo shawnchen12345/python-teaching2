@@ -1,503 +1,305 @@
-# Day 3: 流程控制与函数 (Power Up!)
+#🟦 封面页
 
-第1页：今日目标
+标题：Python函数入门 —— 从不会写到能自己封装功能
 
-从"写脚本"升级为"工程师"
+讲课提示：
+今天我们要学的是——Python里最重要的能力之一：写函数。
+学会函数，代码才算真正“像程序”。
 
-1. 掌握 if/for/while 核心逻辑
-2. 函数设计：参数、返回值、作用域
-3. Python 标准库（开箱即用的轮子）
-4. 代码复用与模块化
+🟦 第1页：这节课你将学会什么
 
-💡 核心理念：
-- DRY 原则: Don't Repeat Yourself
-- 一个函数只做一件事 (Single Responsibility)
+内容：
 
----
+✔ 什么是函数，为什么一定要用函数
+✔ 如何定义和调用函数
+✔ 参数到底是干嘛的（重点）
+✔ return 和 print 的区别
+✔ 变量在函数里为什么会“消失”
+✔ 递归是怎么回事（入门）
+✔ 如何把乱代码改造成结构清晰的程序
 
-## 第一章：流程控制
+讲课提示：
+强调：函数是从“写脚本”到“写程序”的分水岭
 
-🔀 第2页：if-elif-else (分支决策)
+🟦 第2页：如果没有函数会怎样？
 
-核心：根据条件走不同路径
+代码：
 
-score = 85
+print("欢迎 Alice")
+print("今天是学习 Python 的好日子")
+print("祝你学习愉快！")
 
-if score >= 90:
-    print("优秀")
-elif score >= 60:
-    print("及格")
-else:
-    print("不及格")
-
-
-⚠️ 常见错误：
-- 忘记冒号 `:`
-- 缩进不一致 (Python 强制缩进4个空格)
-
-🌟 技巧：三元表达式 (Ternary Operator)
-result = "通过" if score >= 60 else "失败"
-
-📝 课堂练习 1（if）
-
-题目：判断年份是否为闰年
-规则：
-- 能被4整除且不能被100整除，或
-- 能被400整除
-
-year = 2024
-# 写代码判断并打印结果
-
-🔁 第3页：for 循环（遍历专家）
-
-1. 遍历列表/字符串
-for item in [1, 2, 3]:
-    print(item)
-
-2. range() 神器
-for i in range(5):        # 0,1,2,3,4
-    print(i)
-
-for i in range(1, 10, 2): # 1,3,5,7,9 (起,止,步长)
-    print(i)
-
-3. 配合 enumerate() 获取索引
-names = ["Alice", "Bob"]
-for index, name in enumerate(names):
-    print(f"{index}: {name}")
+print("欢迎 Bob")
+print("今天是学习 Python 的好日子")
+print("祝你学习愉快！")
 
 
-💡 for 循环的本质：
-能被 for 遍历的对象叫"可迭代对象"(Iterable)
+讲课提示（互动）：
 
-🔄 第4页：while 循环（条件驱动）
+如果有 100 个人怎么办？
 
-只要条件为 True，就一直执行
+如果我要改一句话，要改几次？
 
-count = 0
-while count < 5:
-    print(count)
-    count += 1
+👉 引出：代码重复、难改、难维护
 
+🟦 第3页：函数的本质
 
-⚠️ 死循环陷阱：
-while True:
-    pass  # 永远不会停！(Ctrl+C 强制终止)
+内容：
 
+👉 函数 = 给一段代码起名字，以后随时调用
 
-🎯 实战案例：猜数字游戏
-import random
-secret = random.randint(1, 100)
+生活类比：
 
-while True:
-    guess = int(input("猜一个数字 (1-100): "))
-    if guess == secret:
-        print("恭喜你猜对了！")
-        break  # 跳出循环
-    elif guess < secret:
-        print("太小了")
-    else:
-        print("太大了")
+遥控器按钮
 
-🛑 第5页：循环控制 (break/continue)
+洗衣机“标准模式”
 
-break: 立即终止循环
+外卖App“一键再来一单”
 
-for i in range(10):
-    if i == 5:
-        break  # 到5就停
-    print(i)  # 输出 0,1,2,3,4
+讲课提示：
+函数就是把一组操作打包成一个“按钮”
+
+🟦 第4页：第一个函数
+def say_hello():
+    print("你好！")
 
 
-continue: 跳过本次，进入下一轮
+讲解要点：
 
-for i in range(5):
-    if i == 2:
-        continue  # 跳过2
-    print(i)  # 输出 0,1,3,4
+部分	作用
+def	定义函数
+say_hello	函数名
+()	参数位置
+缩进代码	函数体
+🟦 第5页：调用函数
+say_hello()
+say_hello()
+say_hello()
 
 
-💡 巧用 for-else:
-for i in range(10):
-    if i == 999:
-        break
-else:
-    # 如果循环正常结束（没被break），执行这里
-    print("循环正常结束")
+讲课重点：
+❗函数不会自动执行
+❗必须“调用”才会运行
 
-📝 课堂练习 2（循环）
+🟦 第6页：课堂练习 ①
 
-打印九九乘法表（右上三角形）
-预期输出：
-1x1=1
-1x2=2  2x2=4
-1x3=3  2x3=6  3x3=9
-...
+练习：
 
-提示：嵌套循环 `for i in range(1, 10): for j in range(1, i+1):`
+1️⃣ 写函数 print_line() 打印
 
----
+--------------------
 
-## 第二章：函数 (Functions)
 
-🎁 第6页：函数是什么？
+2️⃣ 写函数 welcome() 打印三句欢迎语
 
-函数 = 可复用的代码块
+讲课提示：
+巡视学生，检查是否：
 
-定义函数：
+忘写括号
+
+忘记缩进
+
+🟦 第7页：函数可以接收数据（参数）
 def greet(name):
-    return f"Hello, {name}!"
+    print("你好，", name)
 
-调用函数：
-msg = greet("Alice")
-print(msg)  # Hello, Alice!
+greet("小明")
+greet("Alice")
 
 
-核心要素：
-1. 输入 (参数 Parameters)
-2. 处理 (函数体)
-3. 输出 (返回值 Return)
+讲解：
 
-🔑 为什么需要函数？
-- 避免重复代码 (DRY)
-- 提高可读性 (功能封装)
-- 便于测试和维护
+概念	含义
+形参	定义函数时的变量 name
+实参	调用时传入的值 "小明"
+🟦 第8页：多个参数
+def introduce(name, age):
+    print("我叫", name, "今年", age, "岁")
 
-⚙️ 第7页：参数的花样
+introduce("小红", 18)
 
-1. 位置参数（必须按顺序）
+
+重点：顺序必须一致
+
+🟦 第9页：关键字参数
+introduce(age=18, name="小红")
+
+
+讲解：
+✔ 顺序可以变
+✔ 可读性更强
+
+🟦 第10页：默认参数
+def power(base, exponent=2):
+    print(base ** exponent)
+
+power(3)     # 平方
+power(3, 3)  # 立方
+
+
+规则：
+👉 默认参数必须放在后面
+
+🟦 第11页：课堂练习 ②（参数）
+
+1️⃣ 写函数 area_rectangle(w, h) 返回面积
+2️⃣ 写函数 student_info(name, grade="一年级")
+3️⃣ 写函数 calc(a, b, op) 支持 + - *
+
+🟦 第12页：print 和 return 不一样！
+def add(a, b):
+    print(a + b)
+
+
+vs
+
 def add(a, b):
     return a + b
-add(1, 2)  # ✅
 
 
-2. 关键字参数（明确指定，顺序无关）
-add(b=2, a=1)  # ✅
+讲课金句：
+🖨 print 是给人看的
+📦 return 是给程序用的
+
+🟦 第13页：返回值参与运算
+result = add(3, 5)
+print(result * 2)
 
 
-3. 默认参数（可选参数）
-def connect(host, port=80):
-    print(f"连接 {host}:{port}")
+强调：
+函数执行完会把 return 后的值“带回来”
 
-connect("example.com")       # port 默认80
-connect("example.com", 443)  # port 指定为443
+🟦 第14页：多个返回值
+def get_user():
+    return "Alice", 18
 
-
-⚠️ 大坑：默认参数不要用可变对象！
-# ❌ 错误写法
-def bad(items=[]):
-    items.append(1)
-    return items
-
-print(bad())  # [1]
-print(bad())  # [1, 1] 👈 意外！第二次调用 items 不是空的
-
-# ✅ 正确写法
-def good(items=None):
-    if items is None:
-        items = []
-    items.append(1)
-    return items
-
-🌟 第8页：可变参数 (*args, **kwargs)
-
-*args: 接收任意数量的位置参数（打包成元组）
-
-def sum_all(*nums):
-    total = 0
-    for n in nums:
-        total += n
-    return total
-
-print(sum_all(1, 2, 3))      # 6
-print(sum_all(10, 20, 30, 40))  # 100
+name, age = get_user()
 
 
-**kwargs: 接收任意数量的关键字参数（打包成字典）
+讲解：
+本质是返回一个元组
 
-def build_profile(name, **info):
-    info['name'] = name
-    return info
+🟦 第15页：课堂练习 ③（返回值）
 
-profile = build_profile("Alice", age=25, city="Beijing")
-print(profile)  # {'name': 'Alice', 'age': 25, 'city': 'Beijing'}
+1️⃣ 写函数 max_of_two(a, b) 返回较大的数
+2️⃣ 写函数 circle_area(r) 返回圆面积
+3️⃣ 写函数 swap(a, b) 返回交换后的两个值
+
+🟦 第16页：变量作用域问题来了…
+def test():
+    x = 10
+
+print(x)  # 报错
 
 
-💡 args 和 kwargs 只是约定俗成的名字，可以改成其他名字。
+讲解：
+函数内部的变量 = 局部变量
 
-📝 课堂练习 3（函数）
+🟦 第17页：全局变量
+x = 5
 
-题目：温度转换器
-定义函数 `convert_temp(value, unit="C")`
-- 如果 unit="C", 转为华氏度 (F = C * 9/5 + 32)
-- 如果 unit="F", 转为摄氏度 (C = (F - 32) * 5/9)
-- 返回转换后的值
+def show():
+    print(x)
 
-测试：
-print(convert_temp(0, "C"))   # 32.0
-print(convert_temp(32, "F"))  # 0.0
 
-🔍 第9页：作用域 (Scope)
+讲解：
+函数里可以读取外面的变量（但不推荐乱改）
 
-变量的"生存范围"
+🟦 第18页：修改全局变量（了解）
+x = 10
 
-x = 10  # 全局变量 (Global)
+def change():
+    global x
+    x = 20
+
+
+强调：⚠️ 新手阶段尽量别用
+
+🟦 第19页：课堂练习 ④（作用域）
+
+问：下面代码输出什么？
+
+x = 10
 
 def func():
-    y = 20  # 局部变量 (Local)
-    print(x)  # ✅ 可以读取全局变量
-    print(y)
+    x = 5
+    print(x)
 
 func()
-print(y)  # ❌ 报错！外面访问不到函数内部的变量
+print(x)
 
 
-⚠️ 修改全局变量需要声明 `global`
-count = 0
+答案：
+函数内 5，外面还是 10
 
-def increment():
-    global count  # 告诉 Python: 我要改全局的 count
-    count += 1
+🟦 第20页：函数调用函数
+def square(x):
+    return x * x
 
-increment()
-print(count)  # 1
+def sum_of_squares(a, b):
+    return square(a) + square(b)
 
 
-💡 LEGB 规则 (查找顺序)：
-Local → Enclosing → Global → Built-in
+讲解：
+函数就像工具，可以互相配合
 
-🎯 第10页：综合案例 — 简易计算器
+🟦 第21页：给函数写说明（好习惯）
+def add(a, b):
+    """返回两个数的和"""
+    return a + b
 
-设计一个函数 `calculator(a, b, op)`：
-- op 可以是 '+', '-', '*', '/'
-- 返回计算结果
-- 如果除数为0，返回 "错误：除数不能为0"
+🟦 第22页：递归是什么？
 
-def calculator(a, b, op):
-    if op == '+':
-        return a + b
-    elif op == '-':
-        return a - b
-    elif op == '*':
-        return a * b
-    elif op == '/':
-        if b == 0:
-            return "错误：除数不能为0"
-        return a / b
-    else:
-        return "未知操作"
+函数自己调用自己
 
-print(calculator(10, 5, '+'))  # 15
-print(calculator(10, 0, '/'))  # 错误：除数不能为0
+def factorial(n):
+    if n == 1:
+        return 1
+    return n * factorial(n - 1)
 
 
-💡 进阶思路：可以用字典存储操作符和对应的函数 (函数式编程)
+强调：
+✅ 必须有结束条件
+❌ 否则无限循环
 
-📝 课堂练习 4（综合）
+🟦 第23页：综合案例（重构代码）
 
-题目：判断质数
-定义函数 `is_prime(n)`，判断 n 是否为质数
-- 质数：只能被1和自己整除的数（2,3,5,7,11...）
-- 返回 True/False
+原始代码：
 
-提示：用 for 循环从2到n-1，检查是否有能整除的数
+name = input("姓名：")
+math = int(input("数学成绩："))
+english = int(input("英语成绩："))
+total = math + english
+avg = total / 2
+print(name, "总分：", total)
+print("平均分：", avg)
 
----
+🟦 第24页：拆成函数版本
+def input_score():
+    ...
 
-## 第三章：Python 标准库 (Batteries Included)
+def calc_total(a, b):
+    ...
 
-📦 第11页：为什么 Python 强大？
+def calc_avg(total):
+    ...
 
-"开箱即用的轮子"：内置上百个标准库
+def print_report(name, total, avg):
+    ...
 
-不需要任何安装，直接 import 就能用：
-- random: 随机数
-- time/datetime: 时间处理
-- os/sys: 系统操作
-- json: 数据交换
-- re: 正则表达式
-- ...
 
+讲课提示：
+让学生体会：结构变清晰了
 
-💡 学会用库 = 效率提升10倍
+🟦 第25页：课后作业
 
-🎲 第12页：random 模块（随机）
+1️⃣ 判断一个数是否是素数
+2️⃣ 计算圆面积（默认 π=3.14）
+3️⃣ 秒数转“时:分:秒”
+4️⃣ 用函数重写“猜数字游戏”
 
-import random
+如果你需要，我可以下一步帮你把：
 
-1. 随机整数
-num = random.randint(1, 100)  # 1到100之间（包含）
-
-2. 随机选择
-winner = random.choice(['Alice', 'Bob', 'Tom'])
-
-3. 打乱列表（原地修改）
-deck = [1, 2, 3, 4, 5]
-random.shuffle(deck)
-print(deck)  # [3, 1, 5, 2, 4] (每次不同)
-
-4. 随机抽样（不重复）
-winners = random.sample(range(100), 3)  # 从0-99抽3个
-
-
-🎯 实战：抽奖系统
-participants = ["A", "B", "C", "D", "E"]
-winners = random.sample(participants, 2)
-print(f"中奖名单: {winners}")
-
-⏰ 第13页：time 模块（时间）
-
-import time
-
-1. 获取当前时间戳（秒）
-now = time.time()  # 1704067200.123 (1970-01-01至今的秒数)
-
-2. 延时（暂停程序）
-time.sleep(2)  # 暂停2秒
-
-3. 计算程序耗时
-start = time.time()
-# ... 执行代码 ...
-end = time.time()
-print(f"耗时: {end - start} 秒")
-
-
-📅 datetime 模块（日期操作，更强大）
-from datetime import datetime
-
-now = datetime.now()
-print(now.strftime('%Y-%m-%d %H:%M:%S'))  # 2024-01-01 12:00:00
-
-# 计算日期差
-from datetime import timedelta
-tomorrow = now + timedelta(days=1)
-
-💻 第14页：os/sys 模块（系统交互）
-
-import os
-import sys
-
-1. 获取当前工作目录
-print(os.getcwd())
-
-2. 列出目录下的文件
-files = os.listdir('.')
-print(files)
-
-3. 判断文件是否存在
-if os.path.exists('data.txt'):
-    print("文件存在")
-
-4. 获取命令行参数
-# 运行: python script.py arg1 arg2
-print(sys.argv)  # ['script.py', 'arg1', 'arg2']
-
-5. 退出程序
-sys.exit()  # 立即终止
-
-
-⚠️ 文件路径拼接用 `os.path.join()` 而不是手动拼字符串
-
-📝 课堂练习 5（标准库）
-
-题目：倒计时提醒
-写一个程序，输入秒数 n，倒数 n 秒后输出 "时间到！"
-每秒显示剩余时间
-
-示例输出：
-3...
-2...
-1...
-时间到！
-
----
-
-## 第四章：模块化与代码组织
-
-📂 第15页：import 的艺术
-
-1. 导入整个模块
-import math
-print(math.sqrt(16))  # 4.0
-
-2. 导入特定函数
-from math import sqrt
-print(sqrt(16))  # 不需要 math.
-
-3. 导入所有（不推荐）
-from math import *  # 容易命名冲突
-
-4. 起别名
-import numpy as np  # 约定俗成
-import pandas as pd
-
-
-💡 标准库 vs 第三方库：
-- 标准库：Python 自带，随时能用
-- 第三方库：需要 `pip install xxx` 安装
-
-🔐 第16页：__name__ == "__main__"
-
-为什么需要这行代码？
-
-# myfile.py
-def greet():
-    print("Hello")
-
-greet()  # 直接执行
-
-
-问题：如果别的文件 `import myfile`，greet() 会被自动执行！
-
-解决方案：
-def greet():
-    print("Hello")
-
-if __name__ == "__main__":
-    # 只有直接运行此文件时才执行
-    greet()
-
-
-💡 这是 Python 工程化的第一步
-
-📚 第17页：Day 03 课程核心总结
-
-1. 流程控制三剑客：
-
-| 语句 | 用途 | 典型场景 |
-| :--- | :--- | :--- |
-| **if-elif-else** | 条件分支 | 根据分数给等级、权限判断 |
-| **for** | 遍历序列 | 处理列表、批量操作 |
-| **while** | 条件循环 | 游戏主循环、等待用户输入 |
-
-2. 函数设计核心：
-
-参数类型说明用途
-位置参数必须按顺序传递最常用
-默认参数可选参数配置项（如 port=80）
-*args打包多个位置参数求和、最大值
-**kwargs打包多个关键字参数配置字典
-
-3. 标准库精选：
-
-| 模块 | 核心功能 | 必记方法 |
-| :--- | :--- | :--- |
-| **random** | 随机 | `randint()`, `choice()`, `shuffle()` |
-| **time** | 时间 | `time()`, `sleep()` |
-| **os** | 系统 | `getcwd()`, `listdir()`, `path.exists()` |
-
-🏁 第18页：课后思考
-
-1. 为什么函数的默认参数不能用可变对象（如列表）？
-
-2. `for-else` 中的 `else` 什么时候执行？
-
-3. 如何让一个 Python 文件既能被 import，又能直接运行？
-
----
-
-💡 下节预告：
-Day 4 - 文件操作与异常处理
-- 读写文件（txt, csv, json）
-- try-except 异常捕获
-- 上下文管理器 (with)
+✅ 所有课堂练习的参考答案
+或
+✅ 把这套内容整理成可直接发给学生的讲义版
