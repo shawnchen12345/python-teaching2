@@ -1,9 +1,22 @@
 {
+    // 禁用行内建议 (如 Copilot 灰字)
     "editor.inlineSuggest.enabled": false,
+    // 禁用输入时的自动弹窗建议
     "editor.quickSuggestions": {
         "other": false,
         "comments": false,
         "strings": false
     },
-    "editor.suggest.showWords": false
+    // 禁用单词补全
+    "editor.suggest.showWords": false,
+    // 禁用触发字符建议 (例如输入点号 . 时不弹窗)
+    "editor.suggestOnTriggerCharacters": false,
+    // 禁用参数提示 (函数括号内的提示)
+    "editor.parameterHints.enabled": false,
+    // 禁用代码片段
+    "editor.snippetSuggestions": "none",
+    // 禁用回车键接受建议 (防止误触)
+    "editor.acceptSuggestionOnEnter": "off",
+    // 禁用 Tab 键补全
+    "editor.tabCompletion": "off"
 }
