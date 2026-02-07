@@ -213,19 +213,29 @@ b = {"Tom", "Jerry", "Bob"}
 
 找出只在 A 班的人
 
-🔤 第12页：字符串 String
+🔤 第12页：字符串 String (文本神器)
 
-字符串是不可变字符序列
+1. 核心特性：不可变 (Immutable)
+   - 就像“刻在石头上”，一旦创建不能修改。
+   - text[0] = "A"  ❌ 报错！
+   - 优势：安全（可做字典 Key）、高效（内存共享）。
+   - 类似语言：Java (String), C#
 
-text = "Hello Python"
+2. 杀手锏：切片 (Slicing)
+   - text[0:5]    👉 取前5个
+   - text[-1]     👉 取最后一个 (Java 做不到！)
+   - text[::-1]   👉 字符串翻转
 
+3. 格式化魔法 (f-string)
+   - name = "Alice"; score = 98.5
+   - msg = f"{name} 得分: {score:.1f}"
+   - 极其简洁，类似 JavaScript 的 `${}`
 
-常用方法：
-
-text.lower()
-text.upper()
-text.split()
-text.replace("Python", "World")
+常用方法 (自成一派)：
+text.strip()    # 去除首尾空格 (清洗数据必用)
+text.split(",") # 拆分成列表
+",".join(list)  # 列表合并回字符串
+text.replace("old", "new")
 
 📝 课堂练习 5（String）
 
