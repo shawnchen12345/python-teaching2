@@ -15,6 +15,15 @@
 
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 # 在这里写代码:
+nums[4]=55
+nums.remove(1)
+evens=[]
+for x in nums:
+    if x%2==0:
+        evens.append(x)
+print(nums)
+print(evens)
+
 
 
 print("-" * 30)
@@ -51,6 +60,25 @@ cart = [
 coupon = ("sugar", 0.9) # 标签为 sugar 的商品打 9 折
 
 # 在这里写代码:
+b=0
+b1=0
+c=[]
+for a in cart:
+
+    per_re=a['price']*a['amount']
+    b+=per_re
+    if a['tags']&{'fresh'}=={'fresh'}:
+       c.append(a['name'])
+       b1+=per_re
+    else:
+       b1+=per_re*0.9 
+
+          
+print(b)
+print(*c, sep=',' )
+print(b1)
+
+
 
 
 print("-" * 30)
@@ -66,6 +94,13 @@ print("-" * 30)
 
 sentence = "Hello World Python is Great" # 你可以用 input() 替换这行
 # 在这里写代码:
+word=sentence.split()
+n=0
+print(len(word))
+word[2]='Coding'
+print(*word)
+word=str(word)
+print(word.upper())
 
 
 print("-" * 30)

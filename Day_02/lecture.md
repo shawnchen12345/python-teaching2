@@ -209,9 +209,9 @@ a = {"Alice", "Bob", "Tom"}
 b = {"Tom", "Jerry", "Bob"}
 
 
-找出两个班都在的人
+找出两个班都在的人print(a&B)
 
-找出只在 A 班的人
+找出只在 A 班的人print(a-b)
 
 🔤 第12页：字符串 String (文本神器)
 
