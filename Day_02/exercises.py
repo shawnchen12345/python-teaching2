@@ -11,6 +11,12 @@
 print("--- 练习 1 ---")
 names = ["Alice", "Bob", "Charlie", "David"]
 # 在这里写代码:
+names.append('Eve')#first step
+names.remove('bob')#second step
+names.insert(2,'bobby')#second step
+print(names(-2))#third step
+print(names(1))
+print(names(2))
 
 
 
@@ -27,6 +33,13 @@ students = [
     {"name": "C", "score": 40},
 ]
 # 在这里写代码:
+for x in students:
+
+     if students('score')<60:
+        print(students['name'])
+
+
+
 
 
 
@@ -41,6 +54,10 @@ students = [
 print("\n--- 练习 3 ---")
 points = [(1, 2), (3, 4), (10, 20)]
 # 在这里写代码:
+(a,b)=c
+
+for c in points:
+    print(f'x坐标:{a}','y坐标;{b}')
 
 
 
@@ -56,6 +73,8 @@ print("\n--- 练习 4 ---")
 skills_a = {"Python", "Java", "C++"}
 skills_b = {"Python", "HTML", "CSS"}
 # 在这里写代码:
+print(skills_a&sklls_b)
+print(skills_a-skills_b)
 
 
 

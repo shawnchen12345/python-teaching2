@@ -17,17 +17,24 @@
 
 def is_prime(n):
     # 请在这里写代码
-    pass
-
+    if n<=1:
+        return('不是素数')
+        
+    for x in range(2,n-1):
+        if n%x==0:
+            return '不是素数'
+    return '是素数'
+        
+          
 
 print("=" * 50)
 print("作业 1 测试: 判断素数")
 print("=" * 50)
 # 取消下面的注释来测试
-# print(f"is_prime(2) = {is_prime(2)}")    # True
-# print(f"is_prime(7) = {is_prime(7)}")    # True
-# print(f"is_prime(10) = {is_prime(10)}")  # False
-# print(f"is_prime(1) = {is_prime(1)}")    # False
+print(f"is_prime(2) = {is_prime(2)}")    # True
+print(f"is_prime(7) = {is_prime(7)}")    # True
+print(f"is_prime(10) = {is_prime(10)}")  # False
+print(f"is_prime(1) = {is_prime(1)}")    # False
 
 
 # ===========================================================
@@ -38,7 +45,7 @@ print("=" * 50)
 # - r: 圆的半径
 # - pi: 圆周率，默认值 3.14
 # - 返回圆的面积 (公式: π × r²)
-
+ 
 def circle_area(r, pi=3.14):
     # 请在这里写代码
     pass
@@ -71,16 +78,19 @@ print("=" * 50)
 
 def seconds_to_time(total_seconds):
     # 请在这里写代码
-    pass
-
+    hours = total_seconds // 3600
+    remaining = total_seconds % 3600
+    minutes = remaining // 60
+    seconds = remaining % 60
+    return f'{hours}:{minutes}:{seconds}'
 
 print("\n" + "=" * 50)
 print("作业 3 测试: 秒数转时间")
 print("=" * 50)
-# 取消下面的注释来测试
-# print(f"seconds_to_time(3665) = {seconds_to_time(3665)}")  # 1:1:5
-# print(f"seconds_to_time(7322) = {seconds_to_time(7322)}")  # 2:2:2
-# print(f"seconds_to_time(60) = {seconds_to_time(60)}")      # 0:1:0
+
+print(f"seconds_to_time(3665) = {seconds_to_time(3665)}")  # 1:1:5
+print(f"seconds_to_time(7322) = {seconds_to_time(7322)}")  # 2:2:2
+print(f"seconds_to_time(60) = {seconds_to_time(60)}")      # 0:1:0
 
 
 # ===========================================================
@@ -101,20 +111,36 @@ import random
 
 def generate_secret():
     # 请在这里写代码
-    pass
+    return random.randint(1,100)
 
 def get_guess():
     # 请在这里写代码
-    pass
+    return int(input('请输入猜测值'))
 
 def check_guess(guess, secret):
     # 请在这里写代码
-    pass
+    if guess>secret:
+        print('太大')
+        return 1
+        
+    elif guess<secret:
+        print('太小')
+        return -1
+    else:
+        print('恭喜')
+        return 0
 
 def play_game():
     # 请在这里写代码
-    # 提示: 使用 while 循环，调用上面的函数
-    pass
+    secret=generate_secret()
+    guess=get_guess()
+    while check_guess(guess, secret)!=0:
+        get_guess()
+        check_guess(guess, secret)
+        if check_guess(guess, secret)==0:
+            break
+
+play_game()   
 
 
 print("\n" + "=" * 50)
@@ -139,16 +165,20 @@ print("=" * 50)
 
 def fibonacci(n):
     # 请在这里写代码
-    pass
+    if n <= 2: 
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+    
 
 
 print("\n" + "=" * 50)
 print("挑战题: 斐波那契数列")
 print("=" * 50)
 # 取消下面的注释来测试
-# print(f"fibonacci(1) = {fibonacci(1)}")   # 1
-# print(f"fibonacci(5) = {fibonacci(5)}")   # 5
-# print(f"fibonacci(10) = {fibonacci(10)}") # 55
+print(f"fibonacci(1) = {fibonacci(1)}")   # 1
+print(f"fibonacci(5) = {fibonacci(5)}")   # 5
+print(f"fibonacci(10) = {fibonacci(10)}") # 55
 
 
 

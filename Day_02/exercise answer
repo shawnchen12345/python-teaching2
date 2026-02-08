@@ -1,0 +1,35 @@
+print("--- 练习 1 ---")
+names = ["Alice", "Bob", "Charlie", "David"]
+# 在这里写代码:
+names.append('Eve')#first step
+names.remove('Bob')#second step
+names.insert(1,'bobby')#second step
+print(names[-2])#third step
+print(names[:2])
+
+print("\n--- 练习 2 ---")
+students = [
+    {"name": "A", "score": 55},
+    {"name": "B", "score": 80},
+    {"name": "C", "score": 40},
+]
+# 在这里写代码:
+for x in students:
+     if x["score"]<60:
+        print(x["name"])
+
+print("\n--- 练习 3 ---")
+points = [(1, 2), (3, 4), (10, 20)]
+# 在这里写代码:
+
+
+for a,b in points:
+    print(f'x坐标:{a}, y坐标:{b}')
+
+
+print("\n--- 练习 4 ---")
+skills_a = {"Python", "Java", "C++"}
+skills_b = {"Python", "HTML", "CSS"}
+# 在这里写代码:
+print(skills_a & skills_b)
+print(skills_a-skills_b)

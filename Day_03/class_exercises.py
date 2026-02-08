@@ -7,8 +7,8 @@
 # 对应讲义 1.4 节
 # ===========================================================
 
-print("=" * 50)
-print("随堂练习 1：定义和调用函数")
+'''print("=" * 50)
+print("随堂练习 1:定义和调用函数")
 print("=" * 50)
 
 # 练习 1.1: 定义函数 print_line()
@@ -16,9 +16,15 @@ print("=" * 50)
 # 提示: "-" * 20
 
 # [TODO] 在这里定义函数
+def print_line():
+    print('结果:','='*20)
+
+print_line()
 
 
 # [TODO] 调用该函数 2 次
+print_line()
+print_line()
 
 
 print("\n" + "-" * 30 + "\n")
@@ -30,10 +36,13 @@ print("\n" + "-" * 30 + "\n")
 #   "加油!"
 
 # [TODO] 在这里定义函数
-
+def welcome():
+    print('欢迎来到python世界')
+    print("今天我们学习函数")
+    print("加油!")
 
 # [TODO] 调用该函数
-
+welcome()
 
 # ===========================================================
 # 随堂练习 2：参数传递
@@ -49,11 +58,17 @@ print("=" * 50)
 # 示例: area(10, 5) 应打印 "面积是: 50"
 
 # [TODO] 在这里定义函数
-
+def area(width, height):
+   # width=int(input('请输入width'))
+   # height=int(input('输入height'))
+    #print(width*height)
+    result=width*height
+    print(result)
+    return result
 
 # [TODO] 调用: area(10, 5)
-
-
+n=area(10,5)+1
+print(n)
 print("\n" + "-" * 30 + "\n")
 
 # 练习 2.2: 定义函数 student_info(name, grade="一年级")
@@ -62,12 +77,14 @@ print("\n" + "-" * 30 + "\n")
 #       student_info("小红", "二年级") 应打印 "小红 是二年级的学生"
 
 # [TODO] 在这里定义函数
+def student_info(name, grade="一年级"):
+    print(f'{name} 是{grade}学生')
 
 
 # [TODO] 调用: student_info("小明")
 # [TODO] 调用: student_info("小红", "二年级")
-
-
+student_info("小明")
+student_info("小红", "二年级")
 print("\n" + "-" * 30 + "\n")
 
 # 练习 2.3: 定义函数 calc(a, b, op)
@@ -76,12 +93,25 @@ print("\n" + "-" * 30 + "\n")
 # 示例: calc(10, 3, "+") 应打印 "10 + 3 = 13"
 
 # [TODO] 在这里定义函数
+def calc(a, b, op):
+    if op=='+':
+        result=a+b
+    elif op=='-':
+        result=a-b
+    elif op=="*":
+        result=a*b    
+    print(f'{a}{op}{b}={result}')
+
 
 
 # [TODO] 测试:
 # calc(10, 3, "+")
+calc(10, 3, "+")
 # calc(10, 3, "-")
+calc(10, 3, "-")
 # calc(10, 3, "*")
+calc(10, 3, "*")
+
 
 
 # ===========================================================
@@ -98,10 +128,15 @@ print("=" * 50)
 # 示例: print(max_of_two(10, 20)) 应输出 20
 
 # [TODO] 在这里定义函数
+def max_of_two(a, b):
+    if a>b:
+        return a
+    elif a<b:
+        return b
 
 
 # [TODO] 测试: print(max_of_two(10, 20))
-
+print(max_of_two(10, 20))'''
 
 print("\n" + "-" * 30 + "\n")
 
@@ -111,8 +146,14 @@ print("\n" + "-" * 30 + "\n")
 
 # [TODO] 在这里定义函数
 
+import math
+def circle_area(r):
+    return math.pi*r**2
+    
+
 
 # [TODO] 测试: print(f"半径5的圆面积: {circle_area(5)}")
+print(f"半径5的圆面积: {circle_area(5):.2f}")
 
 
 print("\n" + "-" * 30 + "\n")
@@ -122,11 +163,13 @@ print("\n" + "-" * 30 + "\n")
 # 示例: x, y = swap(10, 20)  # x=20, y=10
 
 # [TODO] 在这里定义函数
+def swap(a, b):
+    return (b,a)
 
 
 # [TODO] 测试:
-# x, y = swap(10, 20)
-# print(f"交换后: x={x}, y={y}")
+x, y = swap(10, 20)
+print(f"交换后: x={x}, y={y}")
 
 
 # ===========================================================
@@ -147,8 +190,8 @@ def func():
     x = 5
     print(f"函数内 x = {x}")
 
-func()
-print(f"函数外 x = {x}")
+func()#5
+print(f"函数外 x = {x}")#10
 
 # [TODO] 在下面写出你的预测:
 # 预测 func() 会打印: ???
@@ -169,11 +212,17 @@ print("=" * 50)
 # 提示: 使用 for 循环遍历 nums
 
 # [TODO] 在这里定义函数
+def my_sum(*nums):
+    s=0
+    for c in nums:
+        s+=c
+    return s
+
 
 
 # [TODO] 测试:
-# print(my_sum(1, 2, 3))       # 应输出 6
-# print(my_sum(10, 20, 30, 40)) # 应输出 100
+print(my_sum(1, 2, 3))       # 应输出 6
+print(my_sum(10, 20, 30, 40)) # 应输出 100
 
 
 print("\n" + "-" * 30 + "\n")
@@ -187,9 +236,12 @@ print("\n" + "-" * 30 + "\n")
 #   - city: Beijing
 
 # [TODO] 在这里定义函数
+def build_profile(name, **info):
+    print(f'用户: {name}')
+    for k,v in info.items():
+        print(f'{k}:{v}')#age:18
 
-
-# [TODO] 测试: build_profile("Alice", age=18, city="Beijing")
+build_profile("Alice", age=18, city="Beijing")
 
 
 # ===========================================================
@@ -209,10 +261,18 @@ print("=" * 50)
 #   递归调用: return n + sum_to_n(n - 1)
 
 # [TODO] 在这里定义函数
+def sum_to_n(n):
+    if n==1:
+        return n
+    else:
+        return n + sum_to_n(n - 1)
 
+   
 
-# [TODO] 测试: print(sum_to_n(5))  # 应输出 15
-# [TODO] 测试: print(sum_to_n(100)) # 应输出 5050
+    
+
+print(sum_to_n(5))  # 应输出 15
+print(sum_to_n(100)) # 应输出 5050
 
 
 # 练习 6.2: 递归打印倒计时 (New!)
@@ -226,9 +286,16 @@ print("=" * 50)
 
 print("\n" + "-" * 30 + "\n")
 # [TODO] 在这里定义函数
+def countdown(n):
+    if n==0:
+        print('发射！')
+        return
+    else:
+        print(n)
+        return countdown(n-1) 
 
 
-# [TODO] 测试: countdown(3)
+countdown(3)
 
 
 # 练习 6.3: 递归求阶乘 (New!)
@@ -239,9 +306,15 @@ print("\n" + "-" * 30 + "\n")
 
 print("\n" + "-" * 30 + "\n")
 # [TODO] 在这里定义函数
+def  factorial(n):
+    if n == 1: 
+        return 1
+    else:
+        return n* factorial(n-1)
+    
 
 
-# [TODO] 测试: print(factorial(5))
+print(factorial(5))
 
 
 print("\n" + "=" * 50)
