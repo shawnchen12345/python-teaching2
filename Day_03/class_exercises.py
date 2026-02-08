@@ -236,12 +236,12 @@ print("\n" + "-" * 30 + "\n")
 #   - city: Beijing
 
 # [TODO] 在这里定义函数
- def build_profile(name, **info):
+def build_profile(name, **info):
     print(f'用户: {name}')
     for k,v in info.items():
         print(f'{k}:{v}')#age:18
 
-[TODO] 测试: build_profile("Alice", age=18, city="Beijing")
+build_profile("Alice", age=18, city="Beijing")
 
 
 # ===========================================================
@@ -261,10 +261,18 @@ print("=" * 50)
 #   递归调用: return n + sum_to_n(n - 1)
 
 # [TODO] 在这里定义函数
+def sum_to_n(n):
+    if n==1:
+        return n
+    else:
+        return n + sum_to_n(n - 1)
 
+   
 
-# [TODO] 测试: print(sum_to_n(5))  # 应输出 15
-# [TODO] 测试: print(sum_to_n(100)) # 应输出 5050
+    
+
+print(sum_to_n(5))  # 应输出 15
+print(sum_to_n(100)) # 应输出 5050
 
 
 # 练习 6.2: 递归打印倒计时 (New!)
@@ -278,9 +286,16 @@ print("=" * 50)
 
 print("\n" + "-" * 30 + "\n")
 # [TODO] 在这里定义函数
+def countdown(n):
+    if n==0:
+        print('发射！')
+        return
+    else:
+        print(n)
+        return countdown(n-1) 
 
 
-# [TODO] 测试: countdown(3)
+countdown(3)
 
 
 # 练习 6.3: 递归求阶乘 (New!)
@@ -291,9 +306,15 @@ print("\n" + "-" * 30 + "\n")
 
 print("\n" + "-" * 30 + "\n")
 # [TODO] 在这里定义函数
+def  factorial(n):
+    if n == 1: 
+        return 1
+    else:
+        return n* factorial(n-1)
+    
 
 
-# [TODO] 测试: print(factorial(5))
+print(factorial(5))
 
 
 print("\n" + "=" * 50)
