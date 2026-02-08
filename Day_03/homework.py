@@ -45,7 +45,7 @@ print(f"is_prime(1) = {is_prime(1)}")    # False
 # - r: 圆的半径
 # - pi: 圆周率，默认值 3.14
 # - 返回圆的面积 (公式: π × r²)
-
+ 
 def circle_area(r, pi=3.14):
     # 请在这里写代码
     pass
@@ -120,24 +120,27 @@ def get_guess():
 def check_guess(guess, secret):
     # 请在这里写代码
     if guess>secret:
+        print('太大')
         return 1
+        
     elif guess<secret:
+        print('太小')
         return -1
     else:
+        print('恭喜')
         return 0
 
 def play_game():
     # 请在这里写代码
-    generate_secret()
-    get_guess()
-    check_guess(guess, secret)
+    secret=generate_secret()
+    guess=get_guess()
     while check_guess(guess, secret)!=0:
         get_guess()
         check_guess(guess, secret)
-    if check_guess(guess, secret)==0:
-    break
+        if check_guess(guess, secret)==0:
+            break
 
-    
+play_game()   
 
 
 print("\n" + "=" * 50)
