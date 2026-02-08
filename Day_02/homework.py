@@ -69,3 +69,64 @@ sentence = "Hello World Python is Great" # 你可以用 input() 替换这行
 
 
 print("-" * 30)
+
+# =========================================================
+# ======================== 参考答案 ========================
+# =========================================================
+
+# --- 作业 1: 列表大洗牌 ---
+# nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# 
+# # 1. 修改 5 -> 55 (索引是4)
+# nums[4] = 55
+# 
+# # 2. 删除 1 (值删除)
+# if 1 in nums:
+#     nums.remove(1)
+# 
+# # 3. 提取偶数
+# evens = []
+# for n in nums:
+#     if n % 2 == 0:
+#         evens.append(n)
+# 
+# # 或者用列表推导式: evens = [n for n in nums if n % 2 == 0]
+# 
+# print(f"修改后的 nums: {nums}")
+# print(f"新的 evens: {evens}")
+
+
+# --- 作业 2: 超市购物小票 ---
+# total_cost = 0
+# for item in cart:
+#     total_cost += item["price"] * item["amount"]
+# print(f"1. 商品总价: {total_cost}")
+# 
+# print("2. 生鲜商品 (fresh):")
+# for item in cart:
+#     if "fresh" in item["tags"]:
+#         print(f"   - {item['name']}")
+# 
+# # 3. (挑战) 优惠券
+# discount_tag, discount_rate = coupon
+# final_cost = 0
+# for item in cart:
+#     cost = item["price"] * item["amount"]
+#     if discount_tag in item["tags"]:
+#         cost *= discount_rate  # 打折
+#     final_cost += cost
+# print(f"3. 打折后总价: {final_cost}")
+
+
+# --- 作业 3: 字符串魔法 ---
+# sentence = input("请输入句子: ")
+# # 1. 单词数量
+# words = sentence.split()
+# print(f"单词数量: {len(words)}")
+# 
+# # 2. 替换
+# new_sentence = sentence.replace("Python", "Coding")
+# print(f"替换后: {new_sentence}")
+# 
+# # 3. 全大写
+# print(f"全大写: {sentence.upper()}")
