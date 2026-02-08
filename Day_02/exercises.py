@@ -91,17 +91,6 @@ text = "Python is good. Python is fast. I love python code."
 #     if stu["score"] < 60:
 #         print(f"{stu['name']} 不及格")
 
-# --- 练习 3 ---
-# for x, y in points:
-#     print("X坐标:", x, "Y坐标:", y)
-
-# --- 练习 4 ---
-# intersection = skills_a & skills_b
-# print(f"共同技能: {intersection}")
-#
-# diff = skills_a - skills_b
-# print(f"A有B没有: {diff}")
-
 # --- 挑战题 ---
 # 1. 清洗数据
 # text = text.lower().replace(".", "")
