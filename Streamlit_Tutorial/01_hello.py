@@ -11,7 +11,7 @@ st.divider()  # 分割线
 st.subheader("试着交互一下")
 
 # 输入框
-name = st.text_input("请输入你的名字", placeholder="例如: 小明")
+name = st.text_input("请输入你的名字", placeholder="例如: 小杜")
 
 if name:
     st.write(f"你好，{name}！ 👋")
