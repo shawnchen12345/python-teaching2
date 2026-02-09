@@ -1,4 +1,6 @@
 import streamlit as st
+if 'count' not in st.session_state:
+    st.session_state.my_counter = 0
 st.title('问候器')
 name= st.text_input("请输入你的名字")
 role=st.selectbox("选择你喜欢的角色", ['劳达',"出身", "学神", "劳氏"])
@@ -14,12 +16,18 @@ col1,col2=st.columns(2)
 with col1:
     st.image('https://p1.ssl.qhimgs1.com/sdr/400__/t045fa82cdc30ed428b.jpg',caption='劳达')
     if st.button('吃劳达肘击'):
-        st.markdown('<span style='font-size:50px;'>man!!!!</span>',unsafe_allow_html=true)
+
+        st.markdown('<span style="font-size:50px;">man!!!!</span>',unsafe_allow_html=True)
 with col2:
     st.image('https://p3.ssl.qhimgs1.com/sdr/400__/t013c0b1d6619932ef9.jpg',caption='helicopter')
     if st.button('孩子们我能活下来吗？'):
+        st.audio("see_you_again.mp3", format="audio/mp3", start_time=0, loop=True, autoplay=True)
         st.balloons()
-
+if st.button('点赞复活劳大'):
+    st.session_state.my_counter += 1
+st.metric(label="当前点赞数", value=st.session_state.my_counter)
+if st.session_state.my_counter==3:
+    st.write("孩子们，I am back!!!")
 
 
 
