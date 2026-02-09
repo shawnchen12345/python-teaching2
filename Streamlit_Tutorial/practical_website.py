@@ -18,14 +18,22 @@ elif op=='x':
 elif op=='/' and num2!=0:
     result=num1/num2
 st.success(f'{result}')'''
+
+
 import streamlit as st
 import pandas as pd
 import numpy as np
-a={"数学": 85, "英语": 78, "物理": 92}
-df = pd.DataFrame(a)
-st.datafream(df)
+if 'my_counter' not in st.session_state:
+    st.session_state.my_counter = 0
+st.sidebar.title("任务表")
+n_task=st.sidebar.text_input('请添加任务')
+priority=st.sidebar.select_slider("优先级", options=['low','mid','high'])
+task_basket={'任务':[n_task],'优先级':[priority]}
 
-
+if st.sidebar.button('sent'):
+    
+df=pd.DataFrame(task_basket)
+st.dataframe(df)
 
 
 
