@@ -23,20 +23,28 @@ st.success(f'{result}')'''
 import streamlit as st
 import pandas as pd
 import numpy as np
+if 'task_basket' not in st.session_state:
+    st.session_state.task_basket = []
 st.sidebar.title("任务表")
 n_task=st.sidebar.text_input('请添加任务')
 priority=st.sidebar.select_slider("优先级", options=['low','mid','high'])
-if 'task_basket' not in st.session_state:
-    st.session_state.task_basket = {'任务':[n_task],'优先级':[priority]}
+
 
 
 
 if st.sidebar.button('sent'):
 
-    df=pd.DataFrame(task_basket)
-    st.dataframe(df)
-    new_item={'任务':[n_task],'优先级':[priority]}
+    
+    new_item={'任务':[n_task],'优先级':[priority],'完成状态':'no'}
     st.session_state.task_basket.append(new_item)
+    df=pd.DataFrame(st.session_state.task_basket)
+    st.dataframe(df)
+    edited_df=st.dataeditor(df,column_config={'已完成':st.column_config.CheckboxColumn('任务状态'),help='点击勾选完成任务',default=False})
+   
+
+    
+
+
 
 
 
