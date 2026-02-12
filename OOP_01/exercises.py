@@ -19,6 +19,12 @@
 # -------------------------------------------------------------------
 print("=== 练习 1: 宠物猫 ===")
 # 在这里写代码:
+class Cat:
+    def __init__(self, name, age):
+        print(f"一只叫 {name} 的猫诞生了！")
+        self.name = name       # 把参数存到对象身上
+        self.age = age
+        self.energy = 100      # 默认值，不需要传参
 
 
 
